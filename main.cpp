@@ -7,7 +7,7 @@ using namespace std;
 int len = 3;
 
 char *vowels[6] = {"a", "e", "i", "o", "y", "u"};
-char *consonants[20] = {"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y" "z"};
+char *consonants[21] = {"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y" "z"};
 char *syllable[2];
 
 ofstream file("Nicks.txt");
