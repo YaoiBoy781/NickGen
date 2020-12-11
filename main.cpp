@@ -1,17 +1,36 @@
 #include <iostream> // For output in console
 #include <time.h> // For random numbers
 #include <fstream> // For output in file
+#include <string>
+#include <sstream>
 
 using namespace std; // To save time :D
 
-#define len 6 // World len
+int len; // World len
+int quantity; // World quantity
+char firstSymbol; // First symbol in the word
 
 char *vowels[6] = {"a", "e", "i", "o", "y", "u"};
 char *consonants[21] = {"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y","z"};
-char nick[len];
 
 ofstream file("file.txt"); // Create new file
 
+// Set Options to generate
+void setOptions(int *len, int *quantity, char *firstSymbol)
+{
+    string inputString; // Create input var for input
+
+    // Set options
+    cout << "Input length of nick:";
+    getline(cin, inputString); // Get line and put to the input var
+    stringstream(inputString) >> *len; // From var to work var
+    cout << "Input first symbol(optional):";
+    getline(cin, inputString);
+    stringstream(inputString) >> *firstSymbol;
+    cout << "Input quantity of  generate nicks:";
+    getline(cin, inputString);
+    stringstream(inputString) >> *quantity;
+}
 char *generateRandomSymbol(int decide, int probability = 0) // Func for generate random symbols
 {
     switch (decide)
@@ -65,12 +84,23 @@ char generateNextSymbol(char lastSymbol) // Generate next symbol
 
 int main() // Main function
 {
+
     srand(time(0)); // For random numbers
 
-    for(int i = 0; i < 100; i++)
-    {
-        nick[0] = *generateRandomSymbol(2, 93); // Set start symbol
+    setOptions(&len, &quantity, &firstSymbol); // Set start options
+    char nick[len]; // Create nick array
 
+    for(int i = 0; i < quantity; i++)
+    {
+        if(firstSymbol == *"") // If empty get random start symbol
+        {
+            nick[0] = *generateRandomSymbol(2, 93); // Set first symbol
+        }
+
+        else
+        {
+            nick[0] = firstSymbol;
+        }
         // Generate symbols
         for (int i = 1; i < len; i++)
         {
