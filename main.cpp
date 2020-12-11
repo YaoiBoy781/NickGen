@@ -27,7 +27,8 @@ void setOptions(int *len, int *quantity, char *firstSymbol)
     cout << "Input first symbol(optional):";
     getline(cin, inputString);
     stringstream(inputString) >> *firstSymbol;
-    cout << "Input quantity of  generate nicks:";
+    *firstSymbol = tolower(*firstSymbol);
+    cout << "Input quantity of generate nicks:";
     getline(cin, inputString);
     stringstream(inputString) >> *quantity;
 }
