@@ -7,7 +7,7 @@
 using namespace std; // To save time :D
 
 int len; // World len
-int quantity; // World quantity
+int quantity; // Word quantity
 char firstSymbol; // First symbol in the word
 
 char *vowels[6] = {"a", "e", "i", "o", "y", "u"};
